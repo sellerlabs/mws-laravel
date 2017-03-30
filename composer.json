@@ -1,0 +1,34 @@
+{
+  "name": "sellerlabs/mws-laravel",
+  "description": "Thin wrapper around Amazon's MWS SDKs.",
+  "require": {
+    "php": ">=5.6.0",
+    "illuminate/support": ">=5.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.7",
+    "mockery/mockery": "^0.9.8",
+    "sellerlabs/injected": "0.1.*"
+  },
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Dennis S. Hennen",
+      "email": "dennis@sellerlabs.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SellerLabs\\Mws\\": "src/SellerLabs/Mws"
+    },
+    "classmap": [
+      "src/MarketplaceWebServiceProducts/"
+    ]
+  },
+    "autoload-dev": {
+    "psr-4": {
+      "Tests\\SellerLabs\\Mws\\": "tests/SellerLabs/Mws"
+    }
+  },
+  "minimum-stability": "stable"
+}
