@@ -21,7 +21,7 @@ class MwsServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
-        $configPath = __DIR__ . '/../config/mws.php';
+        $configPath = __DIR__ . '/../../../config/mws.php';
         $this->publishes([$configPath => config_path('mws.php')]);
         $this->mergeConfigFrom($configPath, 'mws');
     }
