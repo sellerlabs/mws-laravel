@@ -3,9 +3,9 @@
 
 namespace SellerLabs\Mws;
 
-use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+use Illuminate\Support\ServiceProvider as ServiceProvider;
 
-class ServiceProvider extends LaravelServiceProvider {
+class MwsServiceProvider extends ServiceProvider {
 
     /**
      * Indicates if loading of the provider is deferred.
