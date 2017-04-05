@@ -10,9 +10,19 @@
 
 namespace SellerLabs\Mws;
 
-use SellerLabs\Mws\MwsException;
+use SimpleXMLElement;
 
 interface MwsInterface {
+
+    /**
+     * Set the marketplace Id
+     *
+     * @url http://docs.developer.amazonservices.com/en_US/dev_guide/DG_Endpoints.html
+     * @param $marketplaceId
+     *
+     * @return $this
+     */
+    public function setMarketplaceId($marketplaceId);
 
     /**
      * Call MWS to get the FBA, referral, and other fees for an ASIN.
@@ -23,4 +33,14 @@ interface MwsInterface {
      * @throws MwsException
      */
     public function getMyFeesEstimate($asin, $listingPrice);
+
+    /**
+     * Call MWS to get the basic Product information.
+     *
+     * @param string $asin
+     *
+     * @return SimpleXMLElement
+     * @throws MwsException
+     */
+    public function getMatchingProductForId($asin);
 }

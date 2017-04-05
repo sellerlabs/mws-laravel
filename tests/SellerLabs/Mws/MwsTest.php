@@ -82,7 +82,28 @@ class MwsTest extends TestCase
             ->with('mws.success_string', 'Success')
             ->andReturn('Success')
             ->once();
-        $this->setExpectedException(MwsException::class, 'String (String): String');
+        $this->expectException(MwsException::class);
         $this->mws->getMyFeesEstimate('B00XTCERLE', 10);
+    }
+
+    public function testGetMatchingProductForIdSuccess()
+    {
+        // The AWS mock returns 'String' as the status. Match to allow success.
+        $this->config->shouldReceive('get')
+            ->with('mws.success_string', 'Success')
+            ->andReturn('String')
+            ->once();
+        $actual = $this->mws->getMatchingProductForId('B00XTCERLE');
+    }
+
+    public function testGetMatchingProductForIdFailure()
+    {
+        // The AWS mock returns 'String' as the status. Force a failure.
+        $this->config->shouldReceive('get')
+            ->with('mws.success_string', 'Success')
+            ->andReturn('Success')
+            ->once();
+        $this->expectException(MwsException::class);
+        $this->mws->getMatchingProductForId('B00XTCERLE');
     }
 }
