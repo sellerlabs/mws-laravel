@@ -14,9 +14,9 @@ namespace SellerLabs\Mws;
 use Illuminate\Contracts\Config\Repository;
 use MarketplaceWebServiceProducts_Client;
 use MarketplaceWebServiceProducts_Mock;
-use MarketplaceWebServiceProducts_Model_GetMyFeesEstimateRequest as GMF;
-use MarketplaceWebServiceProducts_Model_GetMatchingProductForIdRequest as GMP;
-use MarketplaceWebServiceProducts_Model_IdListType as IL;
+use MarketplaceWebServiceProducts_Model_GetMyFeesEstimateRequest as GetMyFeesEstimateRequest;
+use MarketplaceWebServiceProducts_Model_GetMatchingProductForIdRequest as GetMatchingProductForIdRequest;
+use MarketplaceWebServiceProducts_Model_IdListType as IdListType;
 use SimpleXMLElement;
 
 /**
@@ -99,7 +99,7 @@ class Mws implements MwsInterface
      */
     public function getMyFeesEstimate($asin, $listingPrice)
     {
-        $request = new GMF(
+        $request = new GetMyFeesEstimateRequest(
             [
                 'SellerId' => $this->config->get('mws.seller_id'),
                 'FeesEstimateRequestList' => [
@@ -149,9 +149,9 @@ class Mws implements MwsInterface
      */
     public function getMatchingProductForId($asin)
     {
-        $request = new GMP();
+        $request = new GetMatchingProductForIdRequest();
         $request->setSellerId($this->config->get('mws.seller_id'));
-        $idList = new IL();
+        $idList = new IdListType();
         $idList->setId($asin);
         $request->setIdList($idList);
         $request->setIdType('ASIN');
